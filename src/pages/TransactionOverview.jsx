@@ -84,7 +84,7 @@ function TransactionOverview() {
 
   const handleDelete = async (id) => {
     try {
-      await axiosInstance.delete(`transactions/${id}/`);
+      await axiosInstance.delete(`transactions/delete/${id}/`);
       setTransactions(transactions.filter((t) => t.id !== id));
       setError('');
     } catch (error) {
