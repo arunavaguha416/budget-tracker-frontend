@@ -20,9 +20,7 @@ export function AuthProvider({ children }) {
       const token = response.data.access;
       const refreshToken = response.data.token; // Store refresh token
       const user = response.data.user;
-      console.log('Access Token received:', token);
-      console.log('Refresh Token received:', refreshToken);
-      console.log('User ID received:', user);
+      
       localStorage.setItem('token', token);
       localStorage.setItem('refresh_token', refreshToken);
       localStorage.setItem('user', user);
