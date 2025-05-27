@@ -10,7 +10,6 @@ axiosInstance.interceptors.request.use(
     const token = localStorage.getItem('token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
-      console.log('Attaching token to request:', token);
     } else {
       console.log('No token found in localStorage');
     }
@@ -32,11 +31,11 @@ axiosInstance.interceptors.response.use(
         return axiosInstance(originalRequest);
       }
     }
-    console.log('401 Unauthorized, clearing localStorage and redirecting to login');
-    // localStorage.removeItem('token');
-    // localStorage.removeItem('refresh_token');
-    // localStorage.removeItem('user');
-    // window.location.href = '/login';
+    
+    localStorage.removeItem('token');
+    localStorage.removeItem('refresh_token');
+    localStorage.removeItem('user');
+    window.location.href = '/login';
     return Promise.reject(error);
   }
 );
