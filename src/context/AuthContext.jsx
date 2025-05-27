@@ -16,7 +16,7 @@ export function AuthProvider({ children }) {
 
   const login = async (credentials) => {
     try {
-      const response = await axios.post('http://localhost:8000/api/auth/login/', credentials);
+      const response = await axios.post('https://budget-tracker-m261.onrender.com/api/auth/login/', credentials);
       const token = response.data.access;
       const refreshToken = response.data.token; // Store refresh token
       const user = response.data.user;
@@ -38,7 +38,7 @@ export function AuthProvider({ children }) {
     try {
       const refreshToken = localStorage.getItem('refresh_token');
       if (!refreshToken) throw new Error('No refresh token available');
-      const response = await axios.post('http://localhost:8000/api/token/refresh/', {
+      const response = await axios.post('https://budget-tracker-m261.onrender.com/api/token/refresh/', {
         refresh: refreshToken
       });
       const newAccessToken = response.data.access;
